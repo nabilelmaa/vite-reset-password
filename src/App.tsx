@@ -88,13 +88,19 @@ const App = () => {
   const [phone, setPhone] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [displayMessage, setDisplayMessage] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {}, []);
 
   const handleSubmit = () => {
     if (phone) {
-      setDisplayMessage(true);
-      console.log("Phone number submitted:", phone);
+      setLoading(true); // Set loading to true when the submission starts
+      // Simulate an asynchronous operation (e.g., API call) using setTimeout
+      setTimeout(() => {
+        setDisplayMessage(true);
+        setLoading(false); // Set loading to false when the submission is complete
+        console.log("Phone number submitted:", phone);
+      }, 2000); // Simulating a 2-second delay
     }
   };
 
@@ -116,7 +122,7 @@ const App = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 sm:m-5">
       <p className="flex items-center font-semibold">
         <MdOutlineLockReset />
         Reset Your Password
@@ -140,9 +146,13 @@ const App = () => {
           onClick={handleSubmit}
           className="w-24 border rounded-md bg-[#1a1a1a] hover:border-indigo-600 text-base transition duration-450"
         >
-          Confirm
+          {loading ? (
+            <span className="loading loading-dots loading-md"></span>
+          ) : (
+            "Confirm"
+          )}
         </button>
-      </div>
+      </d
 
       <div className="mt-4">
         {displayMessage ? (
