@@ -152,7 +152,7 @@ const App = () => {
             "Confirm"
           )}
         </button>
-      </d
+      </div>
 
       <div className="mt-4">
         {displayMessage ? (
