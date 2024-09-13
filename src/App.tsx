@@ -17,7 +17,7 @@ const App = () => {
         setDisplayMessage(true);
         setLoading(false);
         console.log("Phone number submitted:", phone);
-      }, 2000); // Simulating a 2-second delay
+      }, 2000);
     }
   };
 
